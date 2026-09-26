@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SunEasy_Blog.Models.BlogPost>
+
+@{
+    ViewData["Title"] = "Blog Home";
+}
+
+<div class="container mt-4">
+    <h1>Blog Posts</h1>
+    <a asp-action="Create" class="btn btn-primary my-3">Create New Post</a>
+
+    @if (!Model.Any())
+    {
+        <p>No posts available yet.</p>
+    }
+    else
+    {
+        @foreach (var post in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">@post.Title</h2>
+                    <p class="text-muted"><small>@post.CreatedAt.ToString("MMM dd, yyyy")</small></p>
+                    <p class="card-text">@post.Content</p>
+                </div>
+            </div>
+        }
+    }
+</div>
